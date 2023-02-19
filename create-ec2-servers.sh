@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ##### Change these values ###
-ZONE_ID="Z020734418XXZIMNTHHTZ"
-DOMAIN="learndevopseasy.online"
+ZONE_ID="Z0366464237Z7LZLZPKFA"
+DOMAIN="devopsb71.online"
 SG_NAME="allow-all"
 #############################
 
