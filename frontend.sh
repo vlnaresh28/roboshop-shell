@@ -1,6 +1,6 @@
 code_dir=$(pwd)
 echo -e "\e[33m Installaling Nginx\e[0m"
-yum install nginxx -y 
+yum install nginx -y 
 
 echo -e "\e[32m Removing Old Content\e[0m"
 rm -rf /usr/share/nginx/html/* 
