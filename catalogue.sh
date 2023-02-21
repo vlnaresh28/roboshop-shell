@@ -12,12 +12,14 @@ status_check $?
 print_head "created new user Roboshop"
 id roboshop &>>${log_file}
 if [ $? -ne 0 ] ; then
- useradd roboshop &>>${log_file}
+  useradd roboshop &>>${log_file}
 fi
 status_check $?
 
 print_head "Created application Directory "
-mkdir /app &>>${log_file}
+if [ ! -d /app ] ; then
+    mkdir /app &>>${log_file}
+fi
 status_check $?
 
 print_head "Removing Old Files "
