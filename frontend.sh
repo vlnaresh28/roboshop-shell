@@ -12,7 +12,7 @@ yum install nginx -y &>>${log_file}
  print_head  "Old Content"
 rm -rf /usr/share/nginx/html/*  &>>${log_file}
 
- print_headDownloading Frontend Content
+ print_head "Downloading Frontend Content"
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip  &>>${log_file}
 
 print_head "Extracting Downloaded Frontend"
