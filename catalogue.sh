@@ -28,7 +28,7 @@ print_head "Installaling NodeJs Dependencies "
 npm install &>>${log_file}
 
 print_head "copy SystemD service file "
-cp ${code_dir}/catalogue.service /etc/systemd/system/catalogue.service &>>${log_file}
+cp ${code_dir}/configs/catalogue.service /etc/systemd/system/catalogue.service &>>${log_file}
 
  
 print_head "reloading SystemD "
@@ -42,7 +42,7 @@ print_head "start catalogue service "
 systemctl start catalogue &>>${log_file}
 
 print_head "copy Mongodb Repo file "
-cp ${code_dir}/mongodb.repo /etc/yum.repos.d/mongo.repo &>>${log_file}
+cp ${code_dir}/configs/mongodb.repo /etc/yum.repos.d/mongo.repo &>>${log_file}
 
 print_head "Installaling mongo Client "
 yum install mongodb-org-shell -y &>>${log_file}
