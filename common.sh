@@ -7,11 +7,11 @@ print_head() {
 }
 
 status_check() {
-    if [ $1 -eq 0 ]; then
-        echo SUCCESS
-    else
-        echo FAILURE
-        Exit 1
-    fi
-
+  if [ $1 -eq 0 ]; then
+    echo SUCCESS
+  else
+    echo FAILURE
+    echo "Read the log file ${log_file} for more information about error"
+    exit 1
+  fi
 }
