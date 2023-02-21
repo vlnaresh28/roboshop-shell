@@ -2,26 +2,30 @@ code_dir=$(pwd)
 log_file=/tmp/roboshop.log
 rm -f ${log_file}
 
-echo -e "\e[33m Installaling Nginx\e[0m"
+print_head()={
+  echo -e "\e[35m$1\e[0m"  
+}
+
+ print_head " Installaling Nginx "
 yum install nginx -y &>>${log_file}
 
-echo -e "\e[32m Removing Old Content\e[0m"
+ print_head  "Old Content"
 rm -rf /usr/share/nginx/html/*  &>>${log_file}
 
-echo -e "\e[35m Downloading Frontend Content\e[0m"
+ print_headDownloading Frontend Content
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip  &>>${log_file}
 
-echo -e "\e[35m Extracting Downloaded Frontend\e[0m"
+print_head "Extracting Downloaded Frontend"
 cd /usr/share/nginx/html
 unzip /tmp/frontend.zip &>>${log_file} 
 
-echo -e "\e[35m Copying Nginx Config for RoboShop\e[0m "
+ print_head "Copying Nginx Config for RoboShop "
 cp ${code_dir}/configs/nginx-roboshop.conf /etc/nginx/default.d/roboshop.conf  &>>${log_file}
 
-echo -e "\e[35m Enabling nginx \e[0m "
+ print_head " Enabling nginx  "
 systemctl enable nginx &>>${log_file}
 
-echo -e "\e[36m reStarting nginx \e[0m "
+print_head " reStarting nginx "
 systemctl restart nginx  &>>${log_file}
 
 
