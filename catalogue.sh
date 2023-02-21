@@ -50,5 +50,5 @@ cp ${code_dir}/mongodb.repo /etc/yum.repos.d/mongo.repo &>>${log_file}
 print_head "Installaling mongodb shell "
 yum install mongodb-org-shell -y &>>${log_file}
 
-print_head "Loading mongodb schema to catalogue.js file "
+print_head "Loading mongodb schema  "
 mongo --host mongodb.learndevopseasy.online </app/schema/catalogue.js &>>${log_file}
