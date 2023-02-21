@@ -3,7 +3,7 @@
  print_head "Installaling Nginx "
  yum install nginx -y &>>${log_file}
 
- print_head  "Old Content"
+ print_head  "Removing Old Content"
  rm -rf /usr/share/nginx/html/*  &>>${log_file}
 
  print_head "Downloading Frontend Content"

@@ -13,11 +13,11 @@ print_head "Enable mongodb service"
 systemctl enable mongod 
 
 
-print_head"Started mongodb service "
+print_head "Started mongodb service "
 systemctl start mongod 
 
 
 #Update listen address from 127.0.0.1 to 0.0.0.0 in /etc/mongod.conf
 
-print_head"restart mongodb service"
+print_head "restart mongodb service"
 systemctl restart mongod
