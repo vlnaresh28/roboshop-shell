@@ -17,7 +17,7 @@ useradd roboshop &>>${log_file}
  
 
 print_head "Created application Directory "
-mkdir /app &>>${log_file}
+sudo /app &>>${log_file}
  status_check $?
  
 
