@@ -6,7 +6,7 @@ print_head() {
   echo -e "\e[35m$1\e[0m"  
 }
 
- print_head " Installaling Nginx "
+ print_head "Installaling Nginx "
 yum install nginx -y &>>${log_file}
 
  print_head  "Old Content"
@@ -22,10 +22,10 @@ unzip /tmp/frontend.zip &>>${log_file}
  print_head "Copying Nginx Config for RoboShop "
 cp ${code_dir}/configs/nginx-roboshop.conf /etc/nginx/default.d/roboshop.conf  &>>${log_file}
 
- print_head " Enabling nginx  "
+ print_head "Enabling nginx  "
 systemctl enable nginx &>>${log_file}
 
-print_head " reStarting nginx "
+print_head "reStarting nginx "
 systemctl restart nginx  &>>${log_file}
 
 
