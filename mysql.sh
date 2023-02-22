@@ -12,7 +12,7 @@ dnf module disable mysql -y  &>>${log_file}
 status_check $?
 
 print_head "Copy MySQL repo file"
-cp ${code_dir}/configs/mysql.repo /etc/yum.repos.d/mysql.repo  &>>${log_file}
+cp ${code_dir}/configs/mysql.repo  /etc/yum.repos.d/mysql.repo  &>>${log_file}
 status_check $?
 
 print_head "Installing MySQL Server"
@@ -29,7 +29,7 @@ status_check $?
 
 print_head "Set Root Password"
 echo show databases | mysql -uroot -p${mysql_root_password} &>>${log_file}
-#if [ $? -ne 0 ]; then
- # mysql_secure_installation --set-root-pass ${mysql_root_password}  &>>${log_file}
-#fi
+if [ $? -ne 0 ]; then
+  mysql_secure_installation --set-root-pass ${mysql_root_password}  &>>${log_file}
+fi
 status_check $?
