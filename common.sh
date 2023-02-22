@@ -16,10 +16,29 @@ status_check() {
   fi
 }
 
-NODEJS () {
-  print_head "configuring nodejs repo "
+schema_setup () {
+  if [ "$ {schema_setup} " == "mongo" ] ; then
+  
+    
+    print_head "copy Mongodb Repo file "
+    cp ${code_dir}/configs/mongodb.repo /etc/yum.repos.d/mongo.repo &>>${log_file}
+    status_check $?
+
+    print_head "Installaling mongo Client "
+    yum install mongodb-org-shell -y &>>${log_file}
+    status_check $?
+
+    print_head "Loading mongodb schema  "
+    mongo --host mongodb.learndevopseasy.online </app/schema/${component}.js &>>${log_file}
+    status_check $?
+  fi
+}
+
+
+nodejs () {
+print_head "configuring nodejs repo "
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${log_file}
- status_check $?
+status_check $?
 
 print_head "Installaling nodejs "
 yum install nodejs -y &>>${log_file}
@@ -73,16 +92,6 @@ print_head "start ${component} service "
 systemctl start ${component} &>>${log_file}
 status_check $?
 
-print_head "copy Mongodb Repo file "
-cp ${code_dir}/configs/mongodb.repo /etc/yum.repos.d/mongo.repo &>>${log_file}
-status_check $?
 
-print_head "Installaling mongo Client "
-yum install mongodb-org-shell -y &>>${log_file}
-status_check $?
-
-print_head "Loading mongodb schema  "
-mongo --host mongodb.learndevopseasy.online </app/schema/${component}.js &>>${log_file}
-status_check $?
-
+schema_setup
 }
