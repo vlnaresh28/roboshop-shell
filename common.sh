@@ -17,7 +17,7 @@ status_check() {
 }
 
 schema_setup () {
-  if [ "$ {schema_setup} " == "mongo" ] ; then
+  if [ "$ {schema_type} " == "mongo" ] ; then
   
     
     print_head "copy Mongodb Repo file "
